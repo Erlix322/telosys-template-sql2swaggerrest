@@ -1,0 +1,1 @@
+# telosys-template-sql2swaggerrest
