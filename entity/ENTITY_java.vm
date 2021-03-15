@@ -1,0 +1,24 @@
+package ${target.javaPackageFromFolder($SRC)};
+
+import javax.persistence.Entity;
+#foreach($attribute in $entity.attributes)
+#if( $attribute.isKeyElement() )
+    import javax.persistence.Id;
+#end
+#end
+
+#foreach( $import in $java.imports($entity.attributes) )
+import $import;
+
+#end
+@Entity
+public class ${entity.name} {
+    
+#foreach($attribute in $entity.attributes)
+#if( $attribute.isKeyElement() )
+    // primary key
+	@Id
+#end
+    public $attribute.type $attribute.name;
+#end
+}

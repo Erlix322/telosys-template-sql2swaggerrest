@@ -1,0 +1,17 @@
+package ${target.javaPackageFromFolder($SRC)};
+
+
+import ${ROOT_PKG}.entities.${entity.name};
+
+import org.springframework.data.repository.CrudRepository;
+
+
+#foreach($attribute in $entity.attributes)
+#if( $attribute.isKeyElement() )
+public interface ${entity.name}Repository extends CrudRepository<${entity.name}, ${attribute.type}> {
+
+}
+#end    
+#end
+
+

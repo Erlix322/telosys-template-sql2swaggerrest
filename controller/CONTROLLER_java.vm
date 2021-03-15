@@ -1,0 +1,20 @@
+package ${target.javaPackageFromFolder($SRC)};
+
+import org.htwdd.sql2apispring.entities.${entity.name};
+import org.htwdd.sql2apispring.repository.${entity.name}Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ${entity.name}Controller {
+
+	@Autowired
+	${entity.name}Repository repo;
+	
+	@GetMapping("/$fn.uncapitalize(${entity.name})")
+	public Iterable<${entity.name}> get() {
+		return repo.findAll();
+		
+	}
+}
